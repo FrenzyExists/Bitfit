@@ -2,21 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/workoutOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/ic_workout"
         android:title="@string/workout" />
     <item
+        android:id="@+id/journalOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/ic_sticky_note"
         android:title="@string/journal" />
     <item
+        android:id="@+id/settingsOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/ic_settings"
         android:title="@string/settings" />
     <item
+        android:id="@+id/workoutAnalytics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/ic_graph"

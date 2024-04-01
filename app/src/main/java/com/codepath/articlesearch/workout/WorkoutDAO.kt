@@ -2,57 +2,23 @@ package com.codepath.articlesearch.workout
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface WorkoutDAO {
-    @Query("SELECT * FROM workout_table")
-    suspend fun getAllWorkoutSessions(): LiveData<List<Workout>>
 
-    @Query("SELECT * FROM exercises_table WHERE category_id = :categoryId")
-    suspend fun getExercisesForCategory(categoryId: Long): LiveData<List<Exercise>>
+    @Insert
+    suspend fun insert(workout: Workout)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertExercise(exercise: Exercise)
+    @Delete
+    suspend fun delete(workout: Workout)
 
-    // Total Reps Done for Exercises in a Category
-    @Query("SELECT SUM(work.reps) " +
-            "FROM workout_table work " +
-            "INNER JOIN exercises_table ex ON work.exercise = ex.exerciseId " +
-            "WHERE ex.category_id = :categoryId")
-    fun getTotalRepsForCategory(categoryId: Long): LiveData<Int?>
+    @Query("SELECT * FROM workout_table ORDER BY id ASC")
+    fun getAllWorkoutSessions(): LiveData<List<Workout>>
 
-    // Most Commonly Performed Exercises
-    @Query("SELECT exercise, COUNT(*) AS count FROM workout_table GROUP BY exercise ORDER BY count DESC")
-    fun getMostCommonExercises(): LiveData<List<ExerciseCount>>
-
-    // Get the current streak of workout sessions
-//    @Query("SELECT MAX(streak) FROM (" +
-//            "  SELECT " +
-//            "    SUM(CASE WHEN date(creation_date, '-1 days') = lag_date THEN 0 ELSE 1 END) OVER (ORDER BY creation_date) as streak " +
-//            "  FROM (" +
-//            "    SELECT " +
-//            "      creation_date, " +
-//            "      LAG(date(creation_date)) OVER (ORDER BY creation_date) as lag_date " +
-//            "    FROM workout_table" +
-//            "  )" +
-//            ")")
-//      SUM(CASE WHEN date(creation_date, '-1 days') THEN 0 ELSE 1 END)
-//    @Query("WITH ranked_workouts AS (\n" +
-//            "    SELECT *,\n" +
-//            "           ROW_NUMBER() OVER (PARTITION BY exerciseId ORDER BY creation_date DESC) AS rn\n" +
-//            "    FROM workout_table\n" +
-//            "),\n" +
-//            "streaks AS (\n" +
-//            "    SELECT exerciseId,\n" +
-//            "           creation_date,\n" +
-//            "           DENSE_RANK() OVER (PARTITION BY exerciseId ORDER BY rn - ROW_NUMBER() OVER (PARTITION BY exerciseId ORDER BY creation_date) DESC) AS streak\n" +
-//            "    FROM ranked_workouts\n" +
-//            ")\n" +
-//            "SELECT exerciseId, MAX(streak) AS latest_streak\n" +
-//            "FROM streaks\n" +
-//            "GROUP BY exerciseId;")
-//    fun getCurrentStreak(): LiveData<Int?>
+    @Update
+    suspend fun update(workout: Workout)
 }
