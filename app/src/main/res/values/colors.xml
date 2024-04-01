@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="background">#EBEBEB</color>
+    <color name="foreground">#3F3D56</color>
+    <color name="options_background">#36736E9E</color>
+    <color name="stroke_background">#CACACA</color>
+    <color name="primary">#AD4747</color>
+    <color name="primary_second">#C04F4F</color>
+    <color name="terciary">#E7DBDB</color>
+    <color name="shadow">#818B87AE</color>
+
+
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>

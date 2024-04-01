@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">ArticleSearch</string>
+    <string name="workout">Workout</string>
+    <string name="journal">Journal</string>
+    <string name="settings">Settings</string>
+    <string name="analytics">Analytics</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="load_slogan">Let’s get healthy</string>
+    <string name="load_desc">Keep track of the important things in life, build habits, and gain better health</string>
+    <string name="load_btn">Getting Started</string>
+    <string name="kgs_lifted">kgs lifted</string>
+    <string name="reps">reps</string>
+    <string name="excercise">Excercise</string>
+    <string name="weight">Weight - kgs</string>
+    <string name="reps2">Reps</string>
+    <string name="ex_example">Donkey Calf Raise</string>
 </resources>
